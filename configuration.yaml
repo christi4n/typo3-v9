@@ -1,0 +1,31 @@
+categories:
+    table: tx_irfaq_cat
+    pid: 88
+    action: insert
+    count: 10
+    fields:
+        title:
+            provider: Words
+            minimum: 1
+            maximum: 2
+
+news:
+    table: tx_irfaq_q
+    pid: 88
+    action: insert
+    count: 100
+    fields:
+        q:
+            provider: Sentences
+            minimum: 1
+            maximum: 1
+        a:
+            provider: Paragraphs
+            minimum: 3
+            maximum: 10
+            html: true
+        cat:
+            provider: Relation
+            table: tx_irfaq_cat
+            minimum: 1
+            maximum: 1

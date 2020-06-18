@@ -1,0 +1,17 @@
+rootPageId: 3
+base: 'http://app.typo3v8.local:8000/'
+
+errorHandling:
+    -
+        errorCode: '404'
+        errorHandler: Page
+        errorContentSource: 't3://page?uid=7'
+
+routes:
+    route: robots.txt
+    type: staticText
+    content: |
+        Sitemap: http://app.typo3v8.local:8000/sitemap.xml
+        User-agent: *
+        Allow: /
+        Disallow: /forbidden/
