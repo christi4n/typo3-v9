@@ -1,17 +1,99 @@
-rootPageId: 3
-base: 'http://app.typo3v8.local:8000/'
-
+base: 'http://app.typo3v9.local:8000/'
+baseVariants: {  }
 errorHandling:
-    -
-        errorCode: '404'
-        errorHandler: Page
+    -   errorCode: '404'
         errorContentSource: 't3://page?uid=7'
-
+        errorHandler: Page
+languages:
+    -   title: French
+        enabled: true
+        base: /
+        typo3Language: fr
+        locale: fr_FR.UTF-8
+        iso-639-1: fr
+        navigationTitle: ''
+        hreflang: fr-FR
+        direction: ''
+        flag: fr
+        languageId: '0'
+rootPageId: 3
+routeEnhancers:
+    Permalink:
+        type: Simple
+        routePath: '/{page_name}/{page_uid}/'
+        requirements:
+            page_uid: '[0-9]{1,8}'
+        _arguments:
+            page_uid: 'id'
+        aspects:
+            page_name:
+                type: LocaleModifier
+                default: 'page'
+                localeMap:
+                    -   locale: 'fr_FR.*|fr_CH.*'
+                        value: 'page'
+    NewsPlugin:
+        type: Extbase
+        extension: News
+        limitToPages:
+            - 3
+            - 86
+        plugin: Pi1
+        routes:
+            -   _arguments:
+                    news_title: news
+                _controller: 'News::detail'
+                routePath: '/{news_title}'
+            -   _arguments:
+                    category: overwriteDemand/categories
+                _controller: 'News::list'
+                routePath: '/{category}'
+            -   _arguments:
+                    tag_name: overwriteDemand/tags
+                _controller: 'News::list'
+                routePath: '/{tag_name}'
+            -   _arguments:
+                    page: '@widget_0/currentPage'
+                _controller: 'News::list'
+                routePath: '/page-{page}'
+            -   _arguments:
+                    month: overwriteDemand/month
+                    year: overwriteDemand/year
+                _controller: 'News::list'
+                routePath: '/{year}/{month}'
+        aspects:
+            category:
+                routeFieldName: title
+                tableName: sys_category
+                type: PersistedAliasMapper
+            month:
+                end: '12'
+                start: '01'
+                type: StaticRangeMapper
+            news_title:
+                routeFieldName: path_segment
+                tableName: tx_news_domain_model_news
+                type: PersistedAliasMapper
+            page:
+                end: '100'
+                start: '1'
+                type: StaticRangeMapper
+            tag_name:
+                routeFieldName: title
+                tableName: tx_news_domain_model_tag
+                type: PersistedAliasMapper
+            year:
+                end: '2099'
+                start: '1970'
+                type: StaticRangeMapper
 routes:
-    route: robots.txt
-    type: staticText
-    content: |
-        Sitemap: http://app.typo3v8.local:8000/sitemap.xml
-        User-agent: *
-        Allow: /
-        Disallow: /forbidden/
+    -   route: robots.txt
+        type: staticText
+        content: |
+            Sitemap: http://app.typo3v9.local:8000/robots.txt
+            User-agent: *
+            Allow: /
+            Disallow: /forbidden/
+    -   route: sitemap.xml
+        type: uri
+        source: 't3://page?uid=3&type=1533906435'
