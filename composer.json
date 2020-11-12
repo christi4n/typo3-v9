@@ -1,11 +1,4 @@
 {
-	"repositories": [
-		{ "type": "composer", "url": "https://composer.typo3.org/" },
-        {
-            "type": "vcs",
-            "url": "https://github.com/proudnerds-typo3/irfaq.git"
-        }
-	],
 	"name": "christi4n/typo3-v9",
 	"description" : "TYPO3 v9 CMS distribution",
 	"version": "1.0.0",
@@ -15,6 +8,13 @@
 			"php": "7.3"
 		}
 	},
+	"repositories": [
+		{ "type": "composer", "url": "https://composer.typo3.org/" },
+        {
+            "type": "vcs",
+            "url": "https://github.com/proudnerds-typo3/irfaq.git"
+        }
+	],
 	"require": {
 		"helhum/typo3-console": "^5.8",
 		"typo3/minimal": "^9.5",
