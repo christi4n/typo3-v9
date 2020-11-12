@@ -8,6 +8,7 @@
 	],
 	"name": "christi4n/typo3-v9",
 	"description" : "TYPO3 v9 CMS distribution",
+	"version": "1.0.0",
 	"license": "GPL-2.0-or-later",
 	"config": {
 		"platform": {
