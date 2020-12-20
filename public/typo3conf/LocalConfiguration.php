@@ -141,7 +141,6 @@ return [
     'SYS' => [
         'devIPmask' => '*',
         'displayErrors' => 1,
-        'encryptionKey' => '360af65160e3a48109231fec375a9199016118ddd364404ba25b4762ef713dba8887b7b7ac741667648381b962dc657c',
         'exceptionalErrors' => 12290,
         'features' => [
             'unifiedPageTranslationHandling' => true,
