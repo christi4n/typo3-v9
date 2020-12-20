@@ -1,6 +1,6 @@
 <?php
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'] = getenv('TYPO3_SYS_SITE_NAME');
-$GLOBALS['TYPO3_CONF_VARS']['DB']['installToolPassword'] = getenv('TYPO3_INSTALL_TOOL_PASSWORD');
+$GLOBALS['TYPO3_CONF_VARS']['BE']['installToolPassword'] = getenv('TYPO3_INSTALL_TOOL_PASSWORD');
 
 # Database
 $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['dbname'] = getenv('TYPO3_DB_NAME');
