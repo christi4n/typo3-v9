@@ -6,6 +6,11 @@
 	"config": {
 		"platform": {
 			"php": "7.3"
+		},
+		"allow-plugins": {
+			"typo3/cms-composer-installers": true,
+			"typo3/class-alias-loader": true,
+			"helhum/typo3-console-plugin": true
 		}
 	},
 	"repositories": [
